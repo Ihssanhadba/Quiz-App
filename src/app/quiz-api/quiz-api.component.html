@@ -1,0 +1,79 @@
+<div *ngIf="!start " class="containner mt-3 ml-3">
+    <label class="ms-5">select quiz categroy:</label>
+    <select class="form-select mb-3 mt-3" aria-label="Default select example" [(ngModel)]="selectedCategory"
+        (ngModelChange)="onCategorySelected()">
+        <option disabled>select quiz categroy:</option>
+        <option *ngFor="let category of categories" [ngValue]="category">
+            {{ category }}
+        </option>
+    </select>
+</div>
+<div class="spinner-border  mt-3 ms-5" role="status" *ngIf="!questionLoaded"></div>
+<div class="containner" *ngIf="categorySelected">
+    <div class="head">
+        <span>category:{{questionArray[0]?.category}}</span>
+        <span>Question count:{{questionArray.length}}</span>
+    </div>
+
+    <div *ngIf="finish" class="result">
+        <div class="failResult" *ngIf="!passed">
+            <span>
+                <small style="color: red;">bad,</small>
+                {{score}}/{{questionArray.length}}!
+            </span>
+            <button (click)="retryQuiz()" class="btn btn-danger">try again</button>
+        </div>
+        <div class="passedResult" *ngIf="passed">
+            <span>
+                <small style="color: green;">perfect,</small>
+                {{score}}/{{questionArray.length}}!
+            </span>
+            <button (click)="restartQuiz()" class="btn btn-success">try again</button>
+        </div>
+
+    </div>
+
+    <div *ngIf="!finish">
+        <div class="body" *ngFor="let question of oneQuestion">
+            <h2>{{question?.question}}</h2>
+            <div class="answers" id="answerBox">
+                <ul *ngFor="let answer of question.answers| keyvalue; let i = index">
+                    <div (click)="onAnswerSelected(i)" *ngIf="answer.value">
+                        <li>
+                            <input name="answers" id="answer-{{i}}" [value]="answer" type="radio"
+                                (click)="onAnswerSelected(i)" [(ngModel)]="selectedAnswer" />
+                            <label for='answer-{{i}}' (click)="onAnswerSelected(i)"
+                                class="choices">{{answer.value}}</label>
+                            <div class="border mt-3"></div>
+                        </li>
+                    </div>
+                </ul>
+            </div>
+            <button class="submitBtn" (click)="showNextQuestion()">Submit</button>
+        </div>
+    </div>
+
+    <div *ngIf="!finish" class="footer">
+        <div #parent class="box-circle">
+            <div class="circle" *ngFor="let question of questionArray"></div>
+        </div>
+        <span class="timer">00:{{time}}</span>
+    </div>
+
+    <div class="hide" id="allQuestions">
+        <div class="body" *ngFor="let question of questionArray,let i = index">
+            <h2>{{question?.question}}</h2>
+            <div class="answers" id="allAnswers">
+                <ul class='radioBox' *ngFor="let answer of question.answers | keyvalue">
+                    <div *ngIf="answer.value">
+                        <li>
+                            <input name="answer-{{i}}" type="radio" [value]="answer" disabled /> {{answer.value}}
+                            <div class="border mt-3"></div>
+                        </li>
+                    </div>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

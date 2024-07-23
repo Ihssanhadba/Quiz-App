@@ -1,0 +1,52 @@
+<div class="containner">
+    <div class="head">
+        <span>category:{{questionArray[0]?.category}}</span>
+        <span>Question count:{{questionArray.length}}</span>
+    </div>
+
+    <div *ngIf="finish" class="result">
+        <small *ngIf="!passed" style="color: red;">bad</small>
+        <small *ngIf="passed" style="color: green;">perfect</small>
+        , {{score}}/{{questionArray.length}}!
+    </div>
+
+    <div *ngIf="!finish">
+        <div class="body" *ngFor="let question of oneQuestion">
+            <h2>{{question?.question}}</h2>
+            <div class="answers" id="answerBox">
+                <ul *ngFor="let answer of question.answers; let i = index">
+                    <div>
+                        <li>
+                            <input name="answers" id="answer-{{i}}" [value]="answer" (click)="onAnswerSelected(i)"
+                                [(ngModel)]="selectedAnswer" type="radio" />
+                            <label for='answer-{{i}}' (click)="onAnswerSelected(i)" class="choices">{{answer}}</label>
+                        </li>
+                        <div class="border"></div>
+                    </div>
+                </ul>
+            </div>
+            <button class="submitBtn" (click)="showNextQuestion()">Submit</button>
+        </div>
+    </div>
+
+    <div *ngIf="!finish" class="footer">
+        <div #parent class="box-circle">
+            <div class="circle" *ngFor="let question of questionArray"></div>
+        </div>
+        <span>00:{{time}}</span>
+    </div>
+
+    <div class="hide" id="allQuestions">
+        <div class="body" *ngFor="let question of questionArray,let i = index">
+            <h2>{{question?.question}}</h2>
+            <div class="answers" id="allAnswers">
+                <ul class='radioBox' *ngFor="let answer of question.answers">
+                    <li>
+                        <input name="answer-{{i}}" type="radio" [value]="answer" disabled /> {{answer}}
+                    </li>
+                    <div class="border"></div>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

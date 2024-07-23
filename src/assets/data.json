@@ -1,0 +1,92 @@
+{
+    "questions": [
+        {
+            "question": "Which attribute is used to define inline styles in HTML?",
+            "answers": [
+                "class",
+                "css",
+                "style",
+                "design"
+            ],
+            "category": "HTML",
+            "correctAnswersIndex": 2
+        },
+        {
+            "question": "What does HTML stand for?",
+            "answers": [
+                "Highly Typed Modular Language",
+                "Hyper Text Markup Language",
+                "Home Tool Markup Language",
+                "Hyperlinks and Text Markup Language"
+            ],
+            "category": "HTML",
+            "correctAnswersIndex": 1
+        },
+        {
+            "question": "Which tag is used to define an image in HTML?",
+            "answers": [
+                "<img>",
+                "<image>",
+                "<picture>",
+                "<photo>"
+            ],
+            "category": "HTML",
+            "correctAnswersIndex": 0
+        },
+        {
+            "question": "Which element is used to create a line break in HTML?",
+            "answers": [
+                "<break>",
+                "<br>",
+                "<lb>",
+                "<newline>"
+            ],
+            "category": "HTML",
+            "correctAnswersIndex": 1
+        },
+        {
+            "question": "What is the correct HTML for creating a hyperlink?",
+            "answers": [
+                "<a href=\"url\">link text</a>",
+                "<link src=\"url\">link text</link>",
+                "<href url=\"link text\">",
+                "<hyperlink>link text</hyperlink>"
+            ],
+            "category": "HTML",
+            "correctAnswersIndex": 0
+        },
+        {
+            "question": "Which attribute is used to specify a unique identifier for an HTML element?",
+            "answers": [
+                "unique",
+                "identifier",
+                "id",
+                "name"
+            ],
+            "category": "HTML",
+            "correctAnswersIndex": 2
+        },
+        {
+            "question": "In HTML, which tag is used to define the header of a document or a section?",
+            "answers": [
+                "<head>",
+                "<header>",
+                "<h1>",
+                "<section>"
+            ],
+            "category": "HTML",
+            "correctAnswersIndex": 1
+        },
+        {
+            "question": "What does the <footer> tag represent in HTML?",
+            "answers": [
+                "Defines a footer for a document or section",
+                "Represents a primary content of the page",
+                "Stands for 'forward'",
+                "Indicates the bottom of the document"
+            ],
+            "category": "HTML",
+            "correctAnswersIndex": 0
+        }
+    ]
+}
