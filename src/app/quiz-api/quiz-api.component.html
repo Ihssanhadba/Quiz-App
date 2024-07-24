@@ -28,9 +28,8 @@
                 <small style="color: green;">perfect,</small>
                 {{score}}/{{questionArray.length}}!
             </span>
-            <button (click)="restartQuiz()" class="btn btn-success">try again</button>
+            <button (click)="restartQuiz()" class="btn btn-success">try another category</button>
         </div>
-
     </div>
 
     <div *ngIf="!finish">
@@ -38,15 +37,15 @@
             <h2>{{question?.question}}</h2>
             <div class="answers" id="answerBox">
                 <ul *ngFor="let answer of question.answers| keyvalue; let i = index">
-                    <div (click)="onAnswerSelected(i)" *ngIf="answer.value">
-                        <li>
-                            <input name="answers" id="answer-{{i}}" [value]="answer" type="radio"
-                                (click)="onAnswerSelected(i)" [(ngModel)]="selectedAnswer" />
-                            <label for='answer-{{i}}' (click)="onAnswerSelected(i)"
-                                class="choices">{{answer.value}}</label>
-                            <div class="border mt-3"></div>
-                        </li>
-                    </div>
+                    <li (click)="selectOption(i);onAnswerSelected(i)" *ngIf="answer.value">
+                        <input name="answers" id="answer-{{i}}" [value]="answer" type="radio"
+                            (click)="onAnswerSelected(i)" [(ngModel)]="selectedAnswer"
+                            [checked]="selectedOption == i" />
+                        <label for='answer-{{i}}' (click)="onAnswerSelected(i)" class="choices">
+                            {{answer.value}}
+                        </label>
+                        <div class="border mt-3"></div>
+                    </li>
                 </ul>
             </div>
             <button class="submitBtn" (click)="showNextQuestion()">Submit</button>
@@ -65,13 +64,10 @@
             <h2>{{question?.question}}</h2>
             <div class="answers" id="allAnswers">
                 <ul class='radioBox' *ngFor="let answer of question.answers | keyvalue">
-                    <div *ngIf="answer.value">
-                        <li>
-                            <input name="answer-{{i}}" type="radio" [value]="answer" disabled /> {{answer.value}}
-                            <div class="border mt-3"></div>
-                        </li>
-                    </div>
-
+                    <li *ngIf="answer.value">
+                        <input name="answer-{{i}}" type="radio" [value]="answer" disabled />
+                        {{answer.value}}
+                    </li>
                 </ul>
             </div>
         </div>

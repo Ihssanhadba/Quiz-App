@@ -27,6 +27,7 @@ export class AppComponent {
   submitted = false;
   indexSelected!: number;
   timer: any;
+  selectedOption:any;
   constructor(private datafetchingservice: DataFetchingService, private el: ElementRef, private renderer: Renderer2) { };
 
   ngOnInit(): void {
@@ -82,6 +83,15 @@ export class AppComponent {
     this.previousIndex = indexSelected;
     const answerSelected = document.getElementById('answerBox')?.children[indexSelected];
     (answerSelected as HTMLElement).style.color = 'blue';
+  }
+
+  selectOption(indexSelected: number): void {
+    if (this.selectedOption !== indexSelected)
+      this.selectedOption = indexSelected;
+    else {
+      this.selectedOption = null;
+      setTimeout(() => this.selectedOption = indexSelected, 0);
+    }
   }
 
   showTrueAnswers() {

@@ -49,12 +49,13 @@
     padding-block-start: 1px;
     margin-block: 20px;
     border-radius: 7px;
-   position: relative;
+    position: relative;
 }
 ul{
     list-style: none;
     padding: 0px;
     margin: 0px;
+    cursor: pointer;
 }
 li{
    padding-block-start: 15px;
@@ -64,9 +65,7 @@ li{
 }
 
 input{
-    background-color: none;
     cursor: pointer;
-
 }
 .submitBtn{
     background-color: #006df8;

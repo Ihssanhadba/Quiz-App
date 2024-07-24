@@ -16,9 +16,9 @@
             <div class="answers" id="answerBox">
                 <ul *ngFor="let answer of question.answers; let i = index">
                     <div>
-                        <li>
+                        <li (click)="selectOption(i);onAnswerSelected(i)" >
                             <input name="answers" id="answer-{{i}}" [value]="answer" (click)="onAnswerSelected(i)"
-                                [(ngModel)]="selectedAnswer" type="radio" />
+                                [(ngModel)]="selectedAnswer" type="radio" [checked]="selectedOption == i"/>
                             <label for='answer-{{i}}' (click)="onAnswerSelected(i)" class="choices">{{answer}}</label>
                         </li>
                         <div class="border"></div>
