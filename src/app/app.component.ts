@@ -135,7 +135,7 @@ export class AppComponent {
 //   I = 0;
 //   index = 0;
 //   time = 10;
-//   timer: any;
+//   timer!: NodeJS.Timeout;;
 //   selectedAnswer!: string;
 //   score = 0;
 //   passed = false;
