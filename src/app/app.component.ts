@@ -27,7 +27,7 @@ export class AppComponent {
   previousIndex: number | null = null;
   submitted = false;
   indexSelected!: number;
-  timer: any;
+  timer!: NodeJS.Timeout;
   selectedOption!: number ;
   wrongAnswerSelected: number[] = [];
   radioSelected: number[] = [];
@@ -43,9 +43,9 @@ export class AppComponent {
     })
   }
 
-  ngAfterViewInit(): void {
-    this.startTime();
-  };
+  // ngAfterViewInit(): void {
+  //   this.startTime();
+  // };
 
   fillArray() {
     this.allQuestionsData.forEach(element => {
@@ -112,6 +112,7 @@ export class AppComponent {
     }, 1000)
   }
 }
+
 
 // import { Component, ElementRef, EventEmitter, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
 // import { DataFetchingService } from './data-fetching.service';
