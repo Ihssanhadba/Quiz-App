@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { QuizApiComponent } from './quiz-api/quiz-api.component'; 
+import { QuizApiComponent } from './quiz-api/quiz-api.component';
 
 @NgModule({
   declarations: [

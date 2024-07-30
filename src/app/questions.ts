@@ -1,5 +1,5 @@
 export interface Questions {
-    category: string;
+    category: string ;
     question: string;
     answers: string[];
     correctAnswersIndex: number;

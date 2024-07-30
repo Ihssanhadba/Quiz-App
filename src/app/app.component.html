@@ -1,6 +1,7 @@
-<div class="containner">
+ <div class="containner">
     <div class="head">
-        <span>category:{{questionArray[0]?.category}}</span>
+        <span *ngIf="questionArray && questionArray.length > 0">category:{{questionArray[0].category}}</span>
+        <span *ngIf="!finish">Q:{{I+1}}</span>
         <span>Question count:{{questionArray.length}}</span>
     </div>
 
@@ -16,10 +17,11 @@
             <div class="answers" id="answerBox">
                 <ul *ngFor="let answer of question.answers; let i = index">
                     <div>
-                        <li (click)="selectOption(i);onAnswerSelected(i)" >
-                            <input name="answers" id="answer-{{i}}" [value]="answer" (click)="onAnswerSelected(i)"
-                                [(ngModel)]="selectedAnswer" type="radio" [checked]="selectedOption == i"/>
-                            <label for='answer-{{i}}' (click)="onAnswerSelected(i)" class="choices">{{answer}}</label>
+                        <li (click)="selectOption(i)" [ngClass]="{'selectedAnswer':selectedOption === i}">
+                            <input name="answers" id="answer-{{i}}" [value]="answer" (click)="selectOption(i)"
+                                [ngClass]="{'selectedAnswer':selectedOption === i}" [(ngModel)]="selectedAnswer"
+                                type="radio" [checked]="selectedOption === i" />
+                            <label for='answer-{{i}}' class="choices">{{answer}}</label>
                         </li>
                         <div class="border"></div>
                     </div>
@@ -31,22 +33,112 @@
 
     <div *ngIf="!finish" class="footer">
         <div #parent class="box-circle">
-            <div class="circle" *ngFor="let question of questionArray"></div>
+            <div class="circle" *ngFor="let question of questionArray;let i = index"
+                [ngClass]="{'circle-done': i  === coloredCircleIndex  || i< coloredCircleIndex}">
+            </div>
         </div>
-        <span>00:{{time}}</span>
+        <span *ngIf="time === 10">00:{{time}}</span>
+        <span *ngIf="time < 10">00:0{{time}}</span>
     </div>
 
-    <div class="hide" id="allQuestions">
+    <div [ngClass]="{'hide':!finish}" id="allQuestions">
         <div class="body" *ngFor="let question of questionArray,let i = index">
-            <h2>{{question?.question}}</h2>
+            <h2>Q:{{i+1}}) {{question?.question}}</h2>
             <div class="answers" id="allAnswers">
-                <ul class='radioBox' *ngFor="let answer of question.answers">
+                <ul class='radioBox' *ngFor="let answer of question.answers; let id = index" 
+                [ngClass]="{'correctAnswer': question.correctAnswersIndex === id,
+                            'wrongAnswer': wrongAnswerSelected[i] === id }">
                     <li>
-                        <input name="answer-{{i}}" type="radio" [value]="answer" disabled /> {{answer}}
+                        <input name="answer-{{i}}" type="radio" [value]="answer"
+                         [disabled]="!(radioSelected[i] === id)" [checked]="radioSelected[i] === id" /> 
+                         {{answer}}
                     </li>
                     <div class="border"></div>
                 </ul>
             </div>
         </div>
     </div>
+</div>  
+<!-- 
+ <div *ngIf="!start " class="containner mt-3 ml-3">
+    <label class="ms-5">select quiz categroy:</label>
+    <select class="form-select mb-3 mt-3" aria-label="Default select example" [(ngModel)]="selectedCategory"
+        (ngModelChange)="onCategorySelected()">
+        <option disabled>select quiz categroy:</option>
+        <option *ngFor="let category of categories" [ngValue]="category">
+            {{ category }}
+        </option>
+    </select>
 </div>
+<div class="spinner-border  mt-3 ms-5" role="status" *ngIf="!questionLoaded"></div>
+<div class="containner" *ngIf="categorySelected">
+    <div class="head">
+        <span>category:{{questionArray[0].category}}</span>
+        <span *ngIf="!finish">Q:{{I+1}}</span>
+        <span>Question count:{{questionArray.length}}</span>
+    </div>
+
+    <div *ngIf="finish" class="result">
+        <div class="failResult" *ngIf="!passed">
+            <span>
+                <small style="color: red;">bad,</small>
+                {{score}}/{{questionArray.length}}!
+            </span>
+            <button (click)="retryQuiz()" class="btn btn-danger">try again</button>
+        </div>
+        <div class="passedResult" *ngIf="passed">
+            <span>
+                <small style="color: green;">perfect,</small>
+                {{score}}/{{questionArray.length}}!
+            </span>
+            <button (click)="restartQuiz()" class="btn btn-success">try another category</button>
+        </div>
+    </div>
+
+    <div *ngIf="!finish">
+        <div class="body" *ngFor="let question of oneQuestion">
+            <h2>{{question?.question}}</h2>
+            <div class="answers" id="answerBox">
+                <ul *ngFor="let answer of question.answers| keyvalue; let i = index">
+                    <li (click)="selectOption(i);onAnswerSelected(i)" [ngClass]="{'selectedAnswer':selectedOption === i}" *ngIf="answer.value">
+                        <input name="answers" id="answer-{{i}}" [value]="answer" type="radio"
+                            (click)="onAnswerSelected(i)" [(ngModel)]="selectedAnswer"
+                            [checked]="selectedOption == i" />
+                        <label for='answer-{{i}}' (click)="onAnswerSelected(i)" class="choices">
+                            {{answer.value}}
+                        </label>
+                        <div class="border mt-3"></div>
+                    </li>
+                </ul>
+            </div>
+            <button class="submitBtn" (click)="showNextQuestion()">Submit</button>
+        </div>
+    </div>
+
+    <div *ngIf="!finish" class="footer">
+        <div #parent class="box-circle">
+            <div class="circle" *ngFor="let question of questionArray;let i = index"
+                [ngClass]="{'circle-done': i  === coloredCircleIndex  || i< coloredCircleIndex}">
+            </div>
+        </div>
+        <span [ngClass]="getTimeClass()" class="timer" *ngIf="time === 10">00:{{time}}</span>
+        <span [ngClass]="getTimeClass()" class="timer" *ngIf="time < 10">00:0{{time}}</span>
+    </div>
+
+    <div [ngClass]="{'hide':!finish}" id="allQuestions">
+        <div class="body" *ngFor="let question of questionArray,let i = index">
+            <h2>Q:{{i+1}}) {{question?.question}}</h2>
+            <div class="answers" id="allAnswers">
+                <ul class='radioBox' *ngFor="let answer of question.answers | keyvalue ;let id = index" 
+                [ngClass]="{'correctAnswer': question.correctAnswersIndex === id,
+                            'wrongAnswer': wrongAnswerSelected[i] === id }">
+                    <li *ngIf="answer.value">
+                        <input name="answer-{{i}}" type="radio" [value]="answer"
+                          [disabled]="!(radioSelected[i] === id)" [checked]="radioSelected[i] === id" />
+                        {{answer.value}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>  -->

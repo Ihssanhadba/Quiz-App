@@ -243,3 +243,34 @@ export class QuizApiComponent {
     }, 1000)
   }
 }
+// selectFalseAnswers(indexSelected: number) {
+//   if (indexSelected >= 0) {
+//     const allAnswers = this.el.nativeElement.querySelectorAll('#allAnswers');
+//     const wrongAnswer = allAnswers[this.I].children[indexSelected];
+//     wrongAnswer.style.backgroundColor = 'red';
+//   }
+// }
+// onAnswerSelected(indexSelected: number): any {
+//   this.indexSelected = indexSelected;
+//   if (this.startQuiz++ == 0) this.startTime();
+//   if (this.previousIndex !== null) {
+//     const previousAnswer = document.getElementById('answerBox')?.children[this.previousIndex];
+//     (previousAnswer as HTMLElement).style.color = 'black';
+//   }
+//   this.previousIndex = indexSelected;
+//   const answerSelected = document.getElementById('answerBox')?.children[indexSelected];
+//   (answerSelected as HTMLElement).style.color = 'blue';
+// }
+
+// checkRadioSelected(indexSelected) {
+//   const allAnswers = this.el.nativeElement.querySelectorAll('#allAnswers');
+//   if (indexSelected >= 0) {
+//     let selectedAnswer = allAnswers[this.I].children[indexSelected];
+//     let li = selectedAnswer.children[0];
+//     let radio = li.children[0];
+//     this.renderer.setAttribute(radio, 'checked', 'true');
+//     this.renderer.removeAttribute(radio, 'disabled');
+//   }
+// }
+
+//}
