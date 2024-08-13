@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { QuizApiComponent } from './quiz-api/quiz-api.component';
+import { CdTimerModule } from 'angular-cd-timer';
+
 
 @NgModule({
   declarations: [
@@ -17,8 +19,10 @@ import { QuizApiComponent } from './quiz-api/quiz-api.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    CdTimerModule
   ],
+  
   providers: [
     provideClientHydration(),
   ],

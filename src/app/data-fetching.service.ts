@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Questions } from './questions';
 @Injectable({
   providedIn: 'root'
 })
@@ -11,21 +12,21 @@ export class DataFetchingService {
 
   constructor(private http: HttpClient) { }
 
-  getQuestions(): Observable<any> {
-    return this.http.get<any>(this.dataUrl);
+  getQuestions(): Observable<Questions> {
+    return this.http.get<Questions>(this.dataUrl);
   }
-  getQuestionsByCategory(limit: number, category: string): Observable<any> {
+  getQuestionsByCategory(limit: number, category: string): Observable<Questions> {
     const params = new HttpParams()
       .set('apiKey', this.apiKey)
       .set('limit', limit.toString())
       .set('category', category);
 
-    return this.http.get<any>(this.apiUrl, { params });
+    return this.http.get<Questions>(this.apiUrl, { params });
   }
-  getAllQuestions(): Observable<any> {
+  getAllQuestions(): Observable<Questions> {
     const params = new HttpParams()
       .set('apiKey', this.apiKey)
 
-    return this.http.get<any>(this.apiUrl, { params });
+    return this.http.get<Questions>(this.apiUrl, { params });
   }
 }

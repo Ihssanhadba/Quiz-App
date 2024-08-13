@@ -27,6 +27,14 @@
     margin-block-end: 10px;
 }
 
+.red-text{
+    color: red;
+}
+
+.green-text {
+    color: green;
+}
+
 .failResult,
 .passedResult {
     display: flex;
@@ -107,7 +115,7 @@ input {
     background-color: #cccccc;
 }
 
-.circle-done {
+.blue-circle {
     background-color: blue;
 }
 

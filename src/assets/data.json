@@ -1,6 +1,7 @@
 {
     "questions": [
         {
+            "id": 0,
             "question": "Which attribute is used to define inline styles in HTML?",
             "answers": [
                 "class",
@@ -12,6 +13,7 @@
             "correctAnswersIndex": 2
         },
         {
+            "id": 1,
             "question": "What does HTML stand for?",
             "answers": [
                 "Highly Typed Modular Language",
@@ -23,6 +25,7 @@
             "correctAnswersIndex": 1
         },
         {
+            "id": 2,
             "question": "Which tag is used to define an image in HTML?",
             "answers": [
                 "<img>",
@@ -34,6 +37,7 @@
             "correctAnswersIndex": 0
         },
         {
+            "id": 3,
             "question": "Which element is used to create a line break in HTML?",
             "answers": [
                 "<break>",
@@ -45,6 +49,7 @@
             "correctAnswersIndex": 1
         },
         {
+            "id": 4,
             "question": "What is the correct HTML for creating a hyperlink?",
             "answers": [
                 "<a href=\"url\">link text</a>",
@@ -56,6 +61,7 @@
             "correctAnswersIndex": 0
         },
         {
+            "id": 5,
             "question": "Which attribute is used to specify a unique identifier for an HTML element?",
             "answers": [
                 "unique",
@@ -67,6 +73,7 @@
             "correctAnswersIndex": 2
         },
         {
+            "id": 6,
             "question": "In HTML, which tag is used to define the header of a document or a section?",
             "answers": [
                 "<head>",
@@ -78,6 +85,7 @@
             "correctAnswersIndex": 1
         },
         {
+            "id": 7,
             "question": "What does the <footer> tag represent in HTML?",
             "answers": [
                 "Defines a footer for a document or section",
