@@ -51,7 +51,7 @@ export class AppComponent {
       this.ngZone.run(() => {
         this.timerLoaded = true;
       });
-    }, 450);
+    }, 500);
   }
 
   fillDataArray(data: Question[]) {
