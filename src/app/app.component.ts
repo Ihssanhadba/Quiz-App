@@ -64,7 +64,7 @@ export class AppComponent {
         correctAnswersIndex: element['correctAnswersIndex'],
       }
       this.questionsArray.push(question);
-    });
+    }); 
   }
 
   showNextQuestion() {
