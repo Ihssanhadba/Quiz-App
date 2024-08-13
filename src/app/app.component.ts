@@ -1,6 +1,6 @@
 import { Component, AfterViewInit, NgZone, ViewChild } from '@angular/core';
 import { DataFetchingService } from './data-fetching.service';
-import { Question as Question } from './questions';
+import { Question } from './questions';
 import { take } from 'rxjs/operators';
 import { CdTimerComponent } from 'angular-cd-timer';
 @Component({
