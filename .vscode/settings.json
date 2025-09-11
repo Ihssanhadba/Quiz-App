@@ -1,0 +1,16 @@
+{
+  "cSpell.words": [
+    "Categ",
+    "categroy",
+    "datafetchingservice",
+    "greenyellow",
+    "quesstion",
+    "sessionservice",
+    "Swal",
+    "sweetalert"
+  ],
+  "workbench.tree.renderIndentGuides": "always",
+  "editor.guides.highlightActiveIndentation": "always",
+  "pythonIndent.useTabOnHangingIndent": true,
+  "html.format.wrapAttributesIndentSize": 2
+}

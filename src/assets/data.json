@@ -1,92 +1,38 @@
-{
-    "questions": [
-        {
-            "question": "Which attribute is used to define inline styles in HTML?",
-            "answers": [
-                "class",
-                "css",
-                "style",
-                "design"
-            ],
-            "category": "HTML",
-            "correctAnswersIndex": 2
-        },
-        {
-            "question": "What does HTML stand for?",
-            "answers": [
-                "Highly Typed Modular Language",
-                "Hyper Text Markup Language",
-                "Home Tool Markup Language",
-                "Hyperlinks and Text Markup Language"
-            ],
-            "category": "HTML",
-            "correctAnswersIndex": 1
-        },
-        {
-            "question": "Which tag is used to define an image in HTML?",
-            "answers": [
-                "<img>",
-                "<image>",
-                "<picture>",
-                "<photo>"
-            ],
-            "category": "HTML",
-            "correctAnswersIndex": 0
-        },
-        {
-            "question": "Which element is used to create a line break in HTML?",
-            "answers": [
-                "<break>",
-                "<br>",
-                "<lb>",
-                "<newline>"
-            ],
-            "category": "HTML",
-            "correctAnswersIndex": 1
-        },
-        {
-            "question": "What is the correct HTML for creating a hyperlink?",
-            "answers": [
-                "<a href=\"url\">link text</a>",
-                "<link src=\"url\">link text</link>",
-                "<href url=\"link text\">",
-                "<hyperlink>link text</hyperlink>"
-            ],
-            "category": "HTML",
-            "correctAnswersIndex": 0
-        },
-        {
-            "question": "Which attribute is used to specify a unique identifier for an HTML element?",
-            "answers": [
-                "unique",
-                "identifier",
-                "id",
-                "name"
-            ],
-            "category": "HTML",
-            "correctAnswersIndex": 2
-        },
-        {
-            "question": "In HTML, which tag is used to define the header of a document or a section?",
-            "answers": [
-                "<head>",
-                "<header>",
-                "<h1>",
-                "<section>"
-            ],
-            "category": "HTML",
-            "correctAnswersIndex": 1
-        },
-        {
-            "question": "What does the <footer> tag represent in HTML?",
-            "answers": [
-                "Defines a footer for a document or section",
-                "Represents a primary content of the page",
-                "Stands for 'forward'",
-                "Indicates the bottom of the document"
-            ],
-            "category": "HTML",
-            "correctAnswersIndex": 0
-        }
-    ]
-}
+[
+  {
+    "category": "SQL",
+    "title": "SQL Quiz",
+    "description": "Dive into the world of databases with our SQL Quiz!",
+    "imageUrl": "https://media.istockphoto.com/id/185085453/photo/sql-wooden-mannequin-demonstrating-this-word.jpg?s=1024x1024&w=is&k=20&c=L6fukGjH29N_4ug6OGL1f1ztXtW5PeR4gy35zu-MBoE="
+  },
+  {
+    "category": "Linux",
+    "title": "Linux Quiz",
+    "description": "Are you ready to put your Linux knowledge to the test?",
+    "imageUrl": "https://beebom.com/wp-content/uploads/2023/04/best-linux-distros-you-should-use.png"
+  },
+  {
+    "category": "CMS",
+    "title": "CMS Quiz",
+    "description": "Explore the fascinating world of CMS with our engaging Quiz!",
+    "imageUrl": "https://img.freepik.com/free-vector/flat-design-cms-concept-with-open-apps_23-2148821227.jpg?t=st=1723565168~exp=1723568768~hmac=cc613f06af953668a7dc7b2bbbe5c8662b4453c7752e0d9f6267a83c9e4b35e6&w=900"
+  },
+  {
+    "category": "Code",
+    "title": "Code Quiz",
+    "description": "This coding quiz is designed to evaluate your programming skills and problem-solving!",
+    "imageUrl": "https://www.hubspot.com/hs-fs/hubfs/how-to-start-coding-1.jpg?width=595&height=400&name=how-to-start-coding-1.jpg"
+  },
+  {
+    "category": "DevOps",
+    "title": "DevOps Quiz",
+    "description": "This quiz focuses on the principles, practices, and tools of DevOps!",
+    "imageUrl": "https://nordicapis.com/wp-content/uploads/The-Role-of-APIs-in-DevOps.png"
+  },
+  {
+    "category": "Docker",
+    "title": "Docker Quiz",
+    "description": "This quiz is designed to test your knowledge and understanding of Docker.",
+    "imageUrl": "https://miro.medium.com/v2/resize:fit:828/format:webp/1*MLFxdoY6ImiTghX9l0lDTA.png"
+  }
+]

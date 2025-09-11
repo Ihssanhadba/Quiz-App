@@ -1,0 +1,31 @@
+@media (min-width: 760px ) and (max-width:1300px){
+  img {
+    height: 200px !important;
+  }
+}
+
+@media (max-width: 1050px) {
+  .card {
+    min-height: 360px;
+  }
+}
+
+img {
+  cursor: pointer;
+  height: 300px;
+}
+
+h5 {
+  cursor: pointer;
+  width: fit-content;
+}
+
+.card {
+  transition: box-shadow 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}

@@ -1,0 +1,88 @@
+<div class="containner mt-2 ">
+    <div class="mx-5 my-2">
+        <label>select quiz category:</label>
+        <select class="form-select mt-2" aria-label="Default select example" [(ngModel)]="selectedCategory"
+          (ngModelChange)="onCategorySelected()">
+            <option disabled>select quiz categroy:</option>
+            <option *ngFor="let category of categories" [ngValue]="category">
+                {{ category }}
+            </option>
+        </select>
+    </div>
+
+    <div class=" ms-5 mt-3  ml-3 me-5" *ngIf="categorySelected">
+        <h2 class="text-center mb-3">Question category : {{selectedCategory}}</h2>
+        <div class=" mb-3 mt-3">
+            <div class="input-group">
+                <small class="input-group-text" id="inputGroup-sizing-default">add question </small>
+                <input type="text" class="form-control" aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-default" [(ngModel)]="question">
+            </div>
+            <span *ngIf="requiredQuestion">please enter question</span>
+            <span *ngIf="shortQuestion">short question</span>
+        </div>
+        <div class="mb-3">
+            <div class="input-group">
+                <div class="input-group-text">
+                    <input name="correctAnswer" class="form-check-input mt-0" type="radio" value=""
+                      [checked]="correctAnswerIndex === 0 " aria-label="radio for following text input"
+                      (click)="checkCorrectAnswer(0)">
+                </div>
+                <input type="text" class="form-control" placeholder="possible answer" aria-label="possible answer"
+                  aria-describedby="button-addon2" [(ngModel)]="answer1">
+                <button (click)="addAnswer()" class="btn btn-outline-secondary" type="button" id="button-addon2">
+                    <i class="bi bi-plus-circle-fill" style="width:20px;height:20px"></i></button>
+            </div>
+            <span *ngIf="requiredAnswer1">please enter answer</span>
+        </div>
+        <div class="mb-3">
+            <div class="input-group">
+                <div class="input-group-text">
+                    <input name="correctAnswer" class="form-check-input mt-0" type="radio" value=""
+                      [checked]="correctAnswerIndex === 1 " aria-label="radio for following text input"
+                      (click)="checkCorrectAnswer(1)">
+                </div>
+                <input type="text" class="form-control" placeholder="possible answer" aria-label="possible answer"
+                  aria-describedby="button-addon2" [(ngModel)]="answer2">
+                <button (click)="addAnswer()" class="btn btn-outline-secondary" type="button" id="button-addon2">
+                    <i class="bi bi-plus-circle-fill" style="width:20px;height:20px"></i></button>
+            </div>
+            <span *ngIf="requiredAnswer2">please enter answer</span>
+        </div>
+        <div *ngIf="answerNb >= 1" class="input-group mb-3">
+            <div class="input-group-text">
+                <input name="correctAnswer" class="form-check-input mt-0" type="radio" value=""
+                  [checked]="correctAnswerIndex === 2 " aria-label="radio for following text input"
+                  (click)="checkCorrectAnswer(2)">
+            </div>
+            <input type="text" class="form-control" placeholder="possible answer" aria-label="possible answer"
+              aria-describedby="button-addon2" [(ngModel)]="answer3">
+            <button (click)="addAnswer()" class="btn btn-outline-secondary" type="button" id="button-addon2">
+                <i class="bi bi-plus-circle-fill" style="width:20px;height:20px"></i></button>
+        </div>
+        <div *ngIf="answerNb >= 2" class="input-group mb-3">
+            <div class="input-group-text">
+                <input name="correctAnswer" class="form-check-input mt-0" type="radio" value=""
+                  aria-label="radio for following text input" (click)="checkCorrectAnswer(3)">
+            </div>
+            <input type="text" class="form-control" placeholder="possible answer" aria-label="possible answer"
+              [checked]="correctAnswerIndex === 3 " aria-describedby="button-addon2" [(ngModel)]="answer4">
+            <button class="btn btn-outline-secondary" type="button" id="button-addon2">
+                <i class="bi bi-plus-circle-fill" style="width:20px;height:20px"></i></button>
+        </div>
+        <button class="btn btn-primary p-2" style="width:100%" (click)="finish()">Submit</button>
+    </div>
+
+    <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1100;">
+        <div id="updateToast" class="toast align-items-center text-white bg-success border-0" role="alert"
+          aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    question added successfully!
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                  aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+</div>

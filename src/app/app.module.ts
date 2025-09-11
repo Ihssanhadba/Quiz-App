@@ -6,11 +6,19 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { QuizApiComponent } from './quiz-api/quiz-api.component';
+import { AddQuesstionComponent } from './add-quesstion/add-quesstion.component';
+import { HomeComponent } from './home/home.component';
+import { EditQuestionComponent } from './edit-question/edit-question.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     QuizApiComponent,
+    AddQuesstionComponent,
+    HomeComponent,
+    EditQuestionComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,

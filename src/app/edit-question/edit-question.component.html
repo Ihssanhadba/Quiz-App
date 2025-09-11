@@ -1,0 +1,68 @@
+<div class="containner mx-5 my-2">
+    <div class="mb-5">
+        <div class="d-flex justify-content-between align-items-center">
+            <label>select quiz category:</label>
+            <button class="btn btn-danger" *ngIf="filteredQuestions.length>0" (click)="deleteAll()">
+                clear<i class="bi bi-x-lg ps-2"></i>
+            </button>
+        </div>
+        <select class="form-select mt-2" aria-label="Default select example" [(ngModel)]="selectedCategory"
+          (ngModelChange)="onCategorySelected()">
+            <option disabled>select quiz categroy:</option>
+            <option *ngFor="let category of categories" [ngValue]="category">
+                {{ category }}
+            </option>
+        </select>
+    </div>
+
+    <div *ngIf="selectedCategory && filteredQuestions.length === 0"
+      class="d-flex justify-content-between align-items-center alert alert-warning" role="alert">
+        No questions available for the selected category.
+        <button class="btn btn-danger" (click)="addQuestion()">Go To Add</button>
+    </div>
+    <div class="mb-4 p-1" *ngFor="let Question of filteredQuestions;let questId = index">
+        <div *ngIf="shouldDisplayCategory(Question.category, questId)" class="d-flex justify-content-center">
+            <h2 class="text-center mb-4 me-5">Question Category: {{Question.category}} </h2>
+        </div>
+        <div class="mb-3 mt-1">
+            <div class="input-group">
+                <small class="input-group-text">add question </small>
+                <input type="text" class="form-control" aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-default" [(ngModel)]="Question.question">
+                <button class="btn btn-danger  fixed-size-btn " (click)="delete(questId)">
+                    <i class="bi bi-trash3"></i>
+                </button>
+            </div>
+        </div>
+        <div *ngFor="let answer of Question.answers| keyvalue; let i = index;  trackBy: trackByFn" class="mb-3">
+            <div *ngIf="answer.value || i < 2 " class="input-group">
+                <div class="input-group-text">
+                    <input name="correctAnswer-{{questId}}" class="form-check-input mt-0" type="radio" value=""
+                      [checked]="Question.correctAnswersIndex === i " aria-label="radio for following text input"
+                      (click)="checkCorrectAnswer(questId,i)">
+                </div>
+                <input type="text" class="form-control" placeholder="possible answer" aria-label="possible answer"
+                  name="option" aria-describedby="button-addon2" [(ngModel)]="Question.answers[i]">
+                <button *ngIf="i<2" (click)="addAnswer(questId)" class="btn btn-outline-secondary" type="button">
+                    <i class="bi bi-plus-circle-fill" style="width:20px;height:20px"></i></button>
+                <button *ngIf="i>=2" (click)="deleteAnswer(questId,i)" class="btn btn-outline-secondary" type="button">
+                    <i class="bi bi-dash-circle-fill" style="width:20px;height:20px"></i></button>
+            </div>
+        </div>
+    </div>
+    <button *ngIf="filteredQuestions.length>0" class="btn btn-primary mb-3 p-2" style="width:100%"
+      (click)="finish()">Submit</button>
+</div>
+
+<div *ngIf="correctData" class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1100;">
+    <div id="updateToast" class="toast align-items-center text-white bg-success border-0" role="alert"
+      aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body">
+                question updated successfully!
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+              aria-label="Close"></button>
+        </div>
+    </div>
+</div>
